@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
+import onImage from './assets/on.jpg';
+import offImage from './assets/off.jpg';
 import './App.css';
 
 function App() {
+
+  let [state, setState] = React.useState({on : false});
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+     <div className='container'>
+      <img src={state.on ? onImage : offImage} alt='bulb image'/>
+     </div>
+
+     <button onClick={()=>setState({on : !state.on})}
+     style={{backgroundColor: state.on? 'red' : 'green'}}
+     >
+      {state.on ? 'Turn Off' : 'Turn On' }
+      </button>
+
+     
     </div>
   );
 }
